@@ -6,6 +6,7 @@ import { type ChangeEvent, type ReactNode, useState } from 'react';
 import { useLanguage } from '../../lib/language';
 import { useShake } from '../hooks';
 import { useStrings } from '../i18n';
+import { DESK_ASIDE } from './desk';
 import { FieldError, StepHeading } from './primitives';
 import type { StepRendererProps } from './types';
 
@@ -37,6 +38,7 @@ function valueSizeClass(chars: number): string {
  * The text draft is local; the stored answer is a real number (or cleared when the field is
  * empty/unparseable). Digits roll when the steppers change the value. The unit agrees with the
  * shown number in the UI language (catalog plural forms: 1 человек, 2 человека, 5 человек).
+ * ≥1024px: heading on the left, the value block centred in the right column.
  */
 export function NumberStep({ step, value, error, shakeToken, onChange, onBlur }: NumberStepProps) {
   const t = useStrings();
@@ -106,16 +108,16 @@ export function NumberStep({ step, value, error, shakeToken, onChange, onBlur }:
   const unit = input?.unit ? unitFor(input, current ?? (Number(placeholder) || 0), language) : '';
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col lg:contents">
       <StepHeading
         id={titleId}
         eyebrow={step.content.eyebrow}
         title={step.content.title}
         helperText={step.content.helperText}
-        className="px-[22px] pt-[34px] md:px-[30px]"
+        className={clsx('px-[22px] pt-[34px] md:px-[30px] tablet-short:pt-6', DESK_ASIDE)}
       />
 
-      <div className="flex flex-1 flex-col items-center justify-center gap-[22px] px-[22px] py-8 md:px-[30px] md:py-10">
+      <div className="flex flex-1 flex-col items-center justify-center gap-[22px] px-[22px] py-8 md:px-[30px] md:py-10 tablet-short:gap-4 tablet-short:py-5 lg:col-start-2 lg:row-[1/3] lg:px-10 lg:pt-9 lg:pb-2">
         <div ref={shakeRef} className="flex flex-col items-center gap-1">
           <label className="flex max-w-full items-baseline justify-center gap-2.5">
             <span className="sr-only">{step.content.title}</span>

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { useShake } from '../hooks';
 import { useStrings } from '../i18n';
+import { DESK_ASIDE, DESK_MAIN } from './desk';
 import { OptionCard } from './OptionCard';
 import { FieldError, StepHeading } from './primitives';
 import type { StepRendererProps } from './types';
@@ -11,6 +12,7 @@ import type { StepRendererProps } from './types';
  * Checkbox cards with a "Selected k of max" counter pill (pips fill one by one, the pill inverts
  * to ink/lime at max). At maxSelections the remaining options are dimmed with a "limit" tag;
  * picking one more shakes that card and the counter and shows the config's maxSelections message.
+ * ≥768px: two option columns from four options. ≥1024px: heading + counter on the left, options on the right.
  */
 export function MultiSelectStep({ step, value, error, shakeToken, onChange }: StepRendererProps) {
   const t = useStrings();
@@ -52,12 +54,12 @@ export function MultiSelectStep({ step, value, error, shakeToken, onChange }: St
   const counterTone = overflow ? 'error' : atMax ? 'max' : selected.length > 0 ? 'some' : 'none';
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col lg:contents">
       <StepHeading
         id={titleId}
         eyebrow={step.content.eyebrow}
         title={step.content.title}
-        className="px-[22px] pt-[34px] pb-[18px] md:px-[30px]"
+        className={clsx('px-[22px] pt-[34px] pb-[18px] md:px-[30px]', DESK_ASIDE)}
         helperText={
           <div className="flex flex-wrap items-center justify-between gap-x-2.5 gap-y-2">
             {step.content.helperText && (
@@ -103,32 +105,37 @@ export function MultiSelectStep({ step, value, error, shakeToken, onChange }: St
         }
       />
 
-      <div
-        ref={groupShakeRef}
-        role="group"
-        aria-labelledby={titleId}
-        aria-describedby={message ? errorId : undefined}
-        className="flex flex-col gap-2 px-[18px] md:px-[26px]"
-      >
-        {options.map((option) => {
-          const checked = selected.includes(option.value);
-          const rejected = overflow?.value === option.value;
-          return (
-            <OptionCard
-              key={option.value}
-              option={option}
-              kind="checkbox"
-              checked={checked}
-              muted={atMax && !checked && !rejected}
-              mutedTag={t.limit}
-              invalid={rejected}
-              shakeToken={rejected ? overflowCount : 0}
-              onToggle={() => toggle(option.value)}
-            />
-          );
-        })}
+      <div className={clsx('max-lg:contents', DESK_MAIN)}>
+        <div
+          ref={groupShakeRef}
+          role="group"
+          aria-labelledby={titleId}
+          aria-describedby={message ? errorId : undefined}
+          className={clsx(
+            'flex flex-col gap-2 px-[18px] md:px-[26px] lg:px-0',
+            options.length >= 4 && 'md:grid md:grid-cols-2',
+          )}
+        >
+          {options.map((option) => {
+            const checked = selected.includes(option.value);
+            const rejected = overflow?.value === option.value;
+            return (
+              <OptionCard
+                key={option.value}
+                option={option}
+                kind="checkbox"
+                checked={checked}
+                muted={atMax && !checked && !rejected}
+                mutedTag={t.limit}
+                invalid={rejected}
+                shakeToken={rejected ? overflowCount : 0}
+                onToggle={() => toggle(option.value)}
+              />
+            );
+          })}
+        </div>
+        <FieldError id={errorId} message={message} className="px-[22px] pt-3.5 md:px-[30px] lg:px-0" />
       </div>
-      <FieldError id={errorId} message={message} className="px-[22px] pt-3.5 md:px-[30px]" />
     </div>
   );
 }

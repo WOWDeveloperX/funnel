@@ -52,7 +52,11 @@ export function ActionButton({
       )}
       {...rest}
     >
-      <span className="min-w-0 truncate text-left">{children}</span>
+      {/* Phones/tablets: one line with an ellipsis. Desktop: a long label wraps to two lines
+          (narrow columns near 1024px) instead of being cut. */}
+      <span className="min-w-0 truncate text-left lg:line-clamp-2 lg:leading-tight lg:whitespace-normal">
+        {children}
+      </span>
       <span
         aria-hidden
         className={clsx(
@@ -93,7 +97,7 @@ export function StepHeading({ eyebrow, title, helperText, id, className }: StepH
           ref={ref}
           id={id}
           tabIndex={-1}
-          className="font-display text-[30px] leading-[1.08] font-bold tracking-[-0.03em] text-pretty text-ink outline-none md:text-[34px] md:leading-[1.05]"
+          className="font-display text-[30px] leading-[1.08] font-bold tracking-[-0.03em] text-pretty text-ink outline-none md:text-[34px] md:leading-[1.05] lg:text-[clamp(34px,3vw,40px)] lg:wrap-break-word"
         >
           {title}
         </h1>
@@ -133,6 +137,18 @@ export function FieldError({ id, message, className }: { id?: string; message: s
           </motion.p>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+/** Decorative error mark (boot / result error screens): a red "!" tile inside a dashed frame. */
+export function ErrorMark() {
+  return (
+    <div aria-hidden className="relative size-24 lg:size-32">
+      <span className="absolute inset-0 rounded-[30px] border-2 border-dashed border-error-ink/40 lg:rounded-[38px] lg:border-error/60" />
+      <span className="absolute inset-3.5 grid place-items-center rounded-[20px] bg-error-ink font-display text-[30px] font-bold text-white lg:inset-[18px] lg:rounded-[26px] lg:text-[40px]">
+        !
+      </span>
     </div>
   );
 }

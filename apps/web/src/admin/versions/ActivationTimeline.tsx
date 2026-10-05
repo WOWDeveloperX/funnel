@@ -13,11 +13,10 @@ const ACTION_CHIP: Record<ActivationAction, string> = {
 const COLLAPSED = 8;
 
 /**
- * Audit label (publish | rollback): the initial seed is the first publish,
- * and switching the pointer to an older version is a rollback whichever button did it.
+ * Audit label: the stored action (seed | publish | activate | rollback), except that switching the
+ * pointer to an older version is shown as a rollback whichever button did it.
  */
 function displayAction(a: VersionActivation): ActivationAction {
-  if (a.action === 'seed') return 'publish';
   if (a.action === 'activate' && a.previousVersion !== null && a.version < a.previousVersion) return 'rollback';
   return a.action;
 }

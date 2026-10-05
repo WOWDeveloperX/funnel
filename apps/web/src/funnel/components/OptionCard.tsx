@@ -24,6 +24,8 @@ interface OptionCardProps {
   onToggle: () => void;
 }
 
+const MUTED_TAG = 'font-mono text-[11px] font-medium text-faint';
+
 /**
  * Option card with radio/checkbox semantics. Selected = inverted ink card with lime key and a
  * lime check that draws itself; tap feedback scales 0.98 → 1.
@@ -60,7 +62,7 @@ export function OptionCard({
         animate={{ scale: 1 }}
         transition={{ type: 'spring', stiffness: 520, damping: 30 }}
         className={clsx(
-          'group flex w-full items-center gap-3.5 rounded-[18px] border-[1.5px] py-2 text-left font-sans text-base leading-snug font-medium md:gap-3 md:text-[15px]',
+          'group flex w-full items-center gap-3.5 rounded-[18px] border-[1.5px] py-2 text-left font-sans text-base leading-snug font-medium md:h-full md:gap-3 md:text-[15px]',
           radio ? 'min-h-[62px] pr-2.5 pl-3 md:px-3' : 'min-h-[58px] px-3.5',
           'transition-[background-color,border-color,color,box-shadow,opacity] duration-150',
           'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink',
@@ -87,15 +89,17 @@ export function OptionCard({
         {!radio && <Indicator kind="checkbox" checked={checked} invalid={invalid} />}
 
         <span className="min-w-0 flex-1">
-          <span className="block">{option.label}</span>
+          <span className="block md:wrap-break-word">{option.label}</span>
           {option.description && (
             <span className={clsx('mt-0.5 block text-sm font-normal', checked ? 'text-paper/65' : 'text-muted')}>
               {option.description}
             </span>
           )}
+          {/* ≥768px (two-column grid): the tag goes under the label so the label keeps its width. */}
+          {dim && mutedTag && <span className={clsx('mt-0.5 hidden md:block', MUTED_TAG)}>{mutedTag}</span>}
         </span>
 
-        {dim && mutedTag && <span className="shrink-0 font-mono text-[11px] font-medium text-faint">{mutedTag}</span>}
+        {dim && mutedTag && <span className={clsx('shrink-0 md:hidden', MUTED_TAG)}>{mutedTag}</span>}
         {radio && <Indicator kind="radio" checked={checked} invalid={false} />}
       </motion.button>
     </div>

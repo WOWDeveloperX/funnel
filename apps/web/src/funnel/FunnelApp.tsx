@@ -2,8 +2,10 @@
  * Public funnel (`/`). Everything rendered comes from the resolved config of the session's pinned
  * version + variant, translated into the selected UI language through the funnel's content catalogs
  * (./localize); this component only switches between lifecycle phases and provides the page:
- * phones get the bare paper screen, ≥768px a 560px card on the dotted desk with a brand mark
- * (top-left) and the language switch (top-right).
+ * phones get the bare paper screen, ≥768px a card on the dotted desk (up to 720px on tablets, a
+ * wide two-column card from 1024px) with a brand mark (top-left) and the language switch
+ * (top-right). The desktop paddings leave the card ~570px at a 720px-high viewport, which every
+ * step fits into without page scroll.
  */
 import type { SessionState } from '@funnel/shared';
 import { useEffect, useMemo } from 'react';
@@ -77,9 +79,9 @@ export default function FunnelApp() {
 
   return (
     <StringsProvider language={language}>
-      <main className="relative min-h-dvh bg-paper text-ink md:flex md:flex-col md:items-center md:justify-center md:bg-desk-dots md:px-6 md:pt-24 md:pb-28">
+      <main className="relative min-h-dvh bg-paper text-ink md:flex md:flex-col md:items-center md:justify-center md:bg-desk-dots md:px-6 md:pt-20 md:pb-12 tablet-short:pt-16 tablet-short:pb-8 lg:px-10 lg:pt-[84px] lg:pb-10">
         {knownFunnel && (
-          <div className="absolute top-6 left-7 hidden max-w-[calc(100%-12rem)] items-center gap-2.5 font-display text-[15px] font-semibold text-ink md:flex">
+          <div className="absolute top-6 left-7 hidden max-w-[calc(100%-12rem)] items-center gap-2.5 font-display text-[15px] font-semibold text-ink md:flex lg:left-10">
             <span
               aria-hidden
               className="grid size-[26px] shrink-0 place-items-center rounded-lg bg-ink text-[13px] text-signal"
@@ -89,7 +91,7 @@ export default function FunnelApp() {
             <span className="truncate">{knownFunnel.title}</span>
           </div>
         )}
-        <div className="absolute top-[22px] right-7 hidden md:block">
+        <div className="absolute top-[22px] right-7 hidden md:block lg:right-10">
           <LanguageSwitcher />
         </div>
         {body}

@@ -1,17 +1,20 @@
+import clsx from 'clsx';
 import { EyeOff } from 'lucide-react';
 import { useFocusOnMount } from '../hooks';
 import { useStrings } from '../i18n';
+import { DESK_MAIN } from './desk';
 
 /**
  * Forward-compatibility fallback for step types this client does not know: a striped card with a
  * neutral icon, "Step unavailable" and a short note (the raw step type is internal and never
  * shown). Continue (footer) moves on; navigation treats it as a non-interactive step.
+ * ≥1024px the card sits in the answer column, under it the Continue button.
  */
 export function UnknownStep() {
   const t = useStrings();
   const titleRef = useFocusOnMount<HTMLHeadingElement>();
   return (
-    <div className="flex flex-1 flex-col px-[18px] pt-[34px] md:px-[26px]">
+    <div className={clsx('flex flex-1 flex-col px-[18px] pt-[34px] md:px-[26px]', DESK_MAIN)}>
       <div className="flex flex-col items-start gap-4 rounded-[26px] border border-ink/[0.06] bg-paper bg-stripes p-[26px]">
         <span
           aria-hidden

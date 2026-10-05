@@ -29,7 +29,7 @@ export function ProgressHeader({ stepId, index, total, segments, canGoBack, onBa
   const delta = useBranchDelta(stepId, total);
 
   return (
-    <div className="flex items-center gap-3.5 px-[18px] pt-[max(env(safe-area-inset-top),14px)] md:px-[30px] md:pt-[26px]">
+    <div className="flex items-center gap-3.5 px-[18px] pt-[max(env(safe-area-inset-top),14px)] md:px-[30px] md:pt-[26px] lg:px-10 lg:pt-9">
       <button
         type="button"
         onClick={onBack}

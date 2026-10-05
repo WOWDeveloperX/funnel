@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* Tablet card (768–1023px) on a short viewport (landscape tablets, small laptop windows). */
+@custom-variant tablet-short (@media (width >= 48rem) and (width < 64rem) and (max-height: 820px));
+
 /*
  * Design tokens (Tailwind v4).
  * Two themes:

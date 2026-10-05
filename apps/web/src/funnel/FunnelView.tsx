@@ -26,7 +26,7 @@ import { ProgressHeader } from './components/ProgressHeader';
 import { ResultStep } from './components/ResultStep';
 import { optionKey } from './components/options';
 import { SingleSelectStep } from './components/SingleSelectStep';
-import { StepShell } from './components/StepShell';
+import { type DeskLayout, StepShell } from './components/StepShell';
 import { UnknownStep } from './components/UnknownStep';
 import { useStrings } from './i18n';
 import { localizeResultView } from './localize';
@@ -39,6 +39,9 @@ const AUTO_ADVANCE_MS = 300;
 
 /** Types that hide the header (back button + progress). */
 const HEADERLESS_TYPES = new Set(['info', 'result']);
+
+/** Desktop composition per step type (StepShell); questions and unknown types use the two columns. */
+const deskLayout = (type: string): DeskLayout => (type === 'info' ? 'split' : type === 'result' ? 'wide' : 'question');
 
 interface FunnelViewProps {
   state: FunnelState;
@@ -180,7 +183,7 @@ export function FunnelView({ state, funnel, catalog, stepId, controller }: Funne
           {(isInfo && step.content.primaryActionLabel) || t.continue}
         </ActionButton>
         {isIntro && (
-          <p className="flex justify-center gap-2.5 font-mono text-xs font-medium text-muted">
+          <p className="flex justify-center gap-2.5 font-mono text-xs font-medium text-muted lg:justify-start lg:pl-6">
             {durationHint && (
               <>
                 <span>{durationHint}</span>
@@ -209,6 +212,7 @@ export function FunnelView({ state, funnel, catalog, stepId, controller }: Funne
     <StepShell
       stepKey={stepId}
       direction={state.direction}
+      layout={deskLayout(step.type)}
       banner={banner}
       header={
         HEADERLESS_TYPES.has(step.type) ? null : (
