@@ -1,0 +1,46 @@
+{
+  "name": "funnel-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Config-driven funnel runtime: shared engine, Fastify API, React funnel + admin.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c blue,magenta \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "PORT=${API_PORT:-3000} tsx watch --env-file-if-exists=.env apps/server/src/server.ts",
+    "dev:web": "npm run dev -w @funnel/web",
+    "build": "npm run build -w @funnel/web && npm run build -w @funnel/server",
+    "start": "node --enable-source-maps --env-file-if-exists=.env apps/server/dist/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "npm run typecheck --workspaces --if-present && tsc --noEmit -p tsconfig.json",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "generate": "tsx --env-file-if-exists=.env scripts/generate.ts",
+    "publish-config": "tsx --env-file-if-exists=.env scripts/publish.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.0",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.9",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "^5.0.3"
+  }
+}

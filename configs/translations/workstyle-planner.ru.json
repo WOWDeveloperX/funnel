@@ -1,0 +1,176 @@
+{
+  "funnelId": "workstyle-planner",
+  "locale": "ru",
+  "messages": {
+    "Find your team's operating style": "Подберите формат работы для вашей команды",
+    "A fictional recommendation funnel used only for the technical assignment.": "Воронка с рекомендацией по формату работы команды.",
+    "Adds a compliance branch, shortens variant B and introduces recommendation_expanded.": "Добавлена ветка о требованиях к доступу, вариант B сокращён, появилось событие recommendation_expanded.",
+
+    "Team operating-style check": "Проверка формата работы команды",
+    "Build a work model your team can actually follow": "Выстройте формат работы, который приживётся в команде",
+    "Answer a few questions and get a fictional recommendation for this technical exercise.": "Ответьте на несколько вопросов — и получите рекомендацию для своей команды.",
+    "Start": "Начать",
+
+    "2-minute team check": "Проверка команды за 2 минуты",
+    "How should your team really work?": "Как вашей команде на самом деле стоит работать?",
+    "Answer a few questions to get a practical operating-style recommendation.": "Ответьте на несколько вопросов и получите практичную рекомендацию по формату работы.",
+    "Show me": "Узнать",
+
+    "90-second operating check": "Экспресс-проверка за 90 секунд",
+    "Is your team losing time to the way it works?": "Не теряет ли ваша команда время из-за того, как устроена работа?",
+    "Answer a few questions to get a practical, fictional operating-style recommendation.": "Ответьте на несколько вопросов — и получите практичные советы, как наладить работу команды.",
+    "Check our setup": "Проверить, как мы работаем",
+
+    "How many people are on the team?": "Сколько человек в команде?",
+    "Include regular contractors who join team rituals.": "Учитывайте и постоянных подрядчиков, которые участвуют в регулярных встречах команды.",
+    "people": {
+      "one": "человек",
+      "few": "человека",
+      "many": "человек",
+      "other": "человека"
+    },
+    "Enter the team size.": "Укажите размер команды.",
+    "The team must have at least one person.": "В команде должен быть хотя бы один человек.",
+    "For this demo, enter a value up to 200.": "Укажите число не больше 200.",
+
+    "Where does the team work most of the time?": "Где команда работает большую часть времени?",
+    "Choose the closest option.": "Выберите наиболее подходящий вариант.",
+    "Fully remote": "Полностью удалённо",
+    "Hybrid": "В гибридном формате",
+    "Mostly in the office": "В основном в офисе",
+    "Select the team's main work mode.": "Выберите основной формат работы команды.",
+
+    "What should the operating model improve?": "Что должен улучшить формат работы?",
+    "Choose between one and three priorities.": "Выберите от одного до трёх приоритетов.",
+    "Decision speed": "Скорость принятия решений",
+    "Deep-focus time": "Время для сосредоточенной работы",
+    "Team connection": "Сплочённость команды",
+    "Lower operating cost": "Снижение операционных расходов",
+    "Faster onboarding": "Быстрая адаптация новичков",
+    "Compliance and access control": "Соответствие требованиям и контроль доступа",
+    "Choose at least one priority.": "Выберите хотя бы один приоритет.",
+    "Choose no more than three priorities.": "Выберите не больше трёх приоритетов.",
+    "What would make the biggest difference right now?": "Что сейчас дало бы самый заметный эффект?",
+    "Choose up to three outcomes.": "Выберите до трёх вариантов.",
+    "What is the most urgent operating constraint?": "Что сейчас больше всего мешает команде работать?",
+    "Choose up to three. Some answers may open a follow-up question.": "Выберите до трёх вариантов. После некоторых ответов появится уточняющий вопрос.",
+
+    "How strict are your information-access constraints?": "Насколько строго у вас ограничен доступ к информации?",
+    "This follow-up appears only when compliance is selected.": "Уточняем, потому что вы выбрали «Соответствие требованиям и контроль доступа».",
+    "Standard role-based access": "Обычный доступ по ролям",
+    "Strict separation and audit trails": "Строгое разграничение доступа и аудит действий",
+    "Industry or legal requirements": "Отраслевые или законодательные требования",
+    "Select the closest access-control requirement.": "Выберите наиболее подходящий уровень контроля доступа.",
+
+    "How far apart are your working hours?": "Насколько расходятся рабочие часы в команде?",
+    "Think about the earliest and latest regular working times.": "Сравните самое раннее и самое позднее время, когда участники обычно работают.",
+    "Mostly the same hours": "Почти у всех одни и те же часы",
+    "About 3–6 hours apart": "Разница примерно 3–6 часов",
+    "More than 6 hours apart": "Разница больше 6 часов",
+    "Select the closest timezone range.": "Выберите подходящую разницу во времени.",
+
+    "How many office days are expected each week?": "Сколько дней в неделю команда должна работать в офисе?",
+    "Enter the usual expectation, not occasional events.": "Укажите обычную норму, а не разовые выезды в офис.",
+    "days": {
+      "one": "день",
+      "few": "дня",
+      "many": "дней",
+      "other": "дня"
+    },
+    "Enter the expected number of office days.": "Укажите, сколько дней в неделю нужно быть в офисе.",
+    "Enter a value from 0 to 5.": "Укажите число от 0 до 5.",
+
+    "How are decisions documented today?": "Как у вас сейчас фиксируются решения?",
+    "Choose what happens most often.": "Выберите то, что происходит чаще всего.",
+    "Mostly discussed in meetings": "В основном обсуждаются на встречах",
+    "Important decisions are documented": "Важные решения записываются",
+    "Written context is the default": "По умолчанию всё фиксируется письменно",
+    "Select the closest description.": "Выберите наиболее точное описание.",
+
+    "How many hours per person go to meetings each week?": "Сколько часов в неделю каждый сотрудник проводит на встречах?",
+    "Use a typical week, not the busiest one.": "Возьмите обычную неделю, а не самую загруженную.",
+    "hours": {
+      "one": "час",
+      "few": "часа",
+      "many": "часов",
+      "other": "часа"
+    },
+    "Enter weekly meeting hours.": "Укажите, сколько часов в неделю уходит на встречи.",
+    "Enter a value from 0 to 40.": "Укажите число от 0 до 40.",
+
+    "How many tools does the team use every week?": "Сколько инструментов команда использует каждую неделю?",
+    "Count messaging, project, documentation and meeting tools.": "Учитывайте мессенджеры, трекеры задач, базы знаний и сервисы для созвонов.",
+    "tools": {
+      "one": "инструмент",
+      "few": "инструмента",
+      "many": "инструментов",
+      "other": "инструмента"
+    },
+    "Enter the number of tools.": "Укажите количество инструментов.",
+    "Enter a value of at least 1.": "Укажите число не меньше 1.",
+    "For this demo, enter a value up to 30.": "Укажите число не больше 30.",
+
+    "Building your recommendation…": "Готовим рекомендацию…",
+    "We could not build the recommendation": "Не удалось подготовить рекомендацию",
+    "Try again": "Попробовать снова",
+
+    "Async-native": "Асинхронный формат",
+    "Your team will benefit from written context, fewer mandatory meetings and explicit response windows.": "Вашей команде подойдёт работа с упором на письменную коммуникацию: меньше обязательных встреч и понятные сроки ответа.",
+    "Move routine status updates to written check-ins.": "Перенесите регулярные отчёты о статусе со встреч в короткие письменные сводки.",
+    "Define response-time expectations by channel.": "Договоритесь, как быстро нужно отвечать в каждом канале.",
+    "Record decisions in one searchable place.": "Фиксируйте решения в одном месте, где их легко найти.",
+
+    "Structured hybrid": "Гибрид с чёткими правилами",
+    "Your team needs a clear reason for office days and equal access to decisions for remote participants.": "Команде нужна понятная цель офисных дней и равный доступ к решениям для тех, кто работает удалённо.",
+    "Give each office day a defined purpose.": "Задайте каждому офисному дню конкретную цель.",
+    "Document decisions before the end of the day.": "Записывайте решения до конца рабочего дня.",
+    "Avoid meetings where only part of the team can participate.": "Избегайте встреч, в которых может участвовать только часть команды.",
+
+    "Office-led with focus protection": "Офис и время без отвлечений",
+    "Your team can keep an office-led model while protecting uninterrupted work and documenting key decisions.": "Команда может и дальше работать в основном в офисе, если защитит время для работы без отвлечений и будет фиксировать ключевые решения.",
+    "Create meeting-free focus blocks.": "Выделите в календаре блоки без встреч для сосредоточенной работы.",
+    "Use the office for collaboration rather than status reporting.": "Используйте офис для совместной работы, а не для отчётов о статусе.",
+    "Publish decisions for people who were not in the room.": "Делитесь решениями с теми, кого не было на обсуждении.",
+
+    "Balanced baseline": "Сбалансированный формат",
+    "Your answers do not point to one dominant model. Start with shared rules and measure what improves.": "По вашим ответам нельзя выделить один подходящий формат. Начните с общих правил и отслеживайте, что меняется к лучшему.",
+    "Agree where decisions are recorded.": "Договоритесь, где фиксировать решения.",
+    "Define which work requires a meeting.": "Определите, для каких задач действительно нужна встреча.",
+    "Review the model after 30 days.": "Пересмотрите формат работы через 30 дней.",
+
+    "Compliance-aware scale": "Контроль доступа без бюрократии",
+    "The operating model must preserve access boundaries and auditability without turning every decision into a meeting.": "Формат работы должен сохранять границы доступа и прозрачность для аудита, не превращая каждое решение во встречу.",
+    "Separate decision records from restricted source material.": "Храните записи о решениях отдельно от материалов с ограниченным доступом.",
+    "Make access ownership explicit for every workspace.": "Назначьте ответственного за доступ к каждому рабочему пространству.",
+    "Audit exceptions instead of adding blanket approval steps.": "Проверяйте исключения вместо того, чтобы согласовывать всё подряд.",
+
+    "Meeting-heavy": "Перегрузка встречами",
+    "Meeting load is likely limiting execution time, regardless of where the team works.": "Похоже, встречи отнимают время у основной работы — независимо от того, где работает команда.",
+    "Replace routine status meetings with written updates.": "Замените регулярные статус-встречи письменными отчётами.",
+    "Require an owner and decision for every recurring meeting.": "У каждой регулярной встречи должны быть ответственный и итоговое решение.",
+    "Cancel one recurring meeting as a controlled experiment.": "Отмените одну регулярную встречу в порядке эксперимента и оцените эффект.",
+
+    "View the action list": "Посмотреть план действий",
+    "See the 30-day action list": "Открыть план на 30 дней",
+    "Open the implementation details": "Подробнее о внедрении",
+
+    "Your team is ready to reduce meetings": "Ваша команда готова сократить встречи",
+    "Your hybrid model needs clearer rules": "Вашему гибридному формату нужны более чёткие правила",
+    "Your office model can be more intentional": "Работу в офисе можно выстроить осознаннее",
+    "Your team needs a shared operating baseline": "Команде нужны общие базовые правила работы",
+
+    "Your team can move faster asynchronously": "В асинхронном режиме ваша команда будет работать быстрее",
+    "Your hybrid setup needs firmer rules": "Гибридной команде нужны более строгие правила",
+    "Your office model needs focus protection": "В офисе нужно защитить время на сосредоточенную работу",
+    "Your team needs one shared operating baseline": "Команде нужен единый свод правил работы",
+    "Your team needs a compliance-aware operating model": "Команде нужен формат работы с учётом требований к доступу",
+    "Meetings are consuming your operating capacity": "Встречи съедают рабочее время команды",
+
+    "async native": "асинхронный формат",
+    "hybrid structured": "гибридный формат",
+    "office core": "офисный формат",
+    "balanced": "баланс форматов",
+    "regulated scale": "строгие требования",
+    "meeting heavy": "много встреч"
+  }
+}

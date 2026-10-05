@@ -1,0 +1,10 @@
+{
+  "funnelId": "workstyle-planner",
+  "locale": "en",
+  "messages": {
+    "people": { "one": "person", "other": "people" },
+    "days": { "one": "day", "other": "days" },
+    "tools": { "one": "tool", "other": "tools" },
+    "hours": { "one": "hour", "other": "hours" }
+  }
+}

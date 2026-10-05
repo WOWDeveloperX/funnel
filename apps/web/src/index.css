@@ -1,0 +1,188 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens (Tailwind v4).
+ * Two themes:
+ *  - funnel  "paper": paper / card / ink / muted / signal (lime) / error
+ *  - admin   "instrument": ad-* surfaces and text, ok (active) / bad (reject) / signal (action)
+ * Variant colours are the same everywhere: A = blue #2F9BFF, B = amber #F5A524.
+ * Fonts are self-hosted (@fontsource-variable): Geologica (display), Onest (text), JetBrains Mono.
+ */
+@theme {
+  --font-display: 'Geologica Variable', 'Geologica', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Onest Variable', 'Onest', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Funnel · paper */
+  --color-paper: #f2f1ec;
+  --color-desk: #e7e6e0;
+  --color-card: #ffffff;
+  --color-ink: #0b0f14;
+  --color-ink-2: #4a515b;
+  --color-muted: #6a707a;
+  --color-faint: #9aa0a8;
+  --color-signal: #c8f54a;
+  --color-signal-ink: #ddf79a;
+  --color-error: #d93a2b;
+  --color-error-ink: #b3261e;
+  --color-error-soft: #ffe6e2;
+  --color-error-line: #f3b4ae;
+
+  /* Admin · instrument */
+  --color-ad-root: #030507;
+  --color-ad-bg: #05080d;
+  --color-ad-top: #070c13;
+  --color-ad-panel: #0a1119;
+  --color-ad-modal: #0b121b;
+  --color-ad-sunken: #0e1620;
+  --color-ad-chip: #13202e;
+  --color-ad-line: #16222f;
+  --color-ad-line-2: #1a2633;
+  --color-ad-line-3: #243244;
+  --color-ad-row: #141e2a;
+  --color-ad-text: #e6edf5;
+  --color-ad-text-2: #c9d4e0;
+  --color-ad-muted: #8a97a8;
+  --color-ad-faint: #5b6878;
+  --color-ad-ghost: #3d4a5a;
+
+  --color-ok: #3dd68c;
+  --color-ok-ink: #7be7b1;
+  --color-ok-bg: #0e2a1f;
+  --color-ok-line: #1e5a3f;
+  --color-bad: #ff5a5f;
+  --color-bad-ink: #ff9a9d;
+  --color-bad-bg: #2a1216;
+  --color-bad-line: #6b2a30;
+
+  /* Experiment variants */
+  --color-variant-a: #2f9bff;
+  --color-variant-a-ink: #8cc4ff;
+  --color-variant-b: #f5a524;
+  --color-variant-b-ink: #ffd08a;
+
+  --animate-shake: shake 0.36s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  --animate-glow: glow 1.6s ease-in-out infinite;
+  --animate-pulse-ring: pulseRing 2s ease-out infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-scan: scan 4s linear infinite;
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translateX(-1px);
+    }
+    20%,
+    80% {
+      transform: translateX(2px);
+    }
+    30%,
+    50%,
+    70% {
+      transform: translateX(-6px);
+    }
+    40%,
+    60% {
+      transform: translateX(6px);
+    }
+  }
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes pulseRing {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(2.3);
+      opacity: 0;
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: -400px 0;
+    }
+    to {
+      background-position: 400px 0;
+    }
+  }
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(500%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* Desktop backdrop behind the 560px funnel card: dotted desk. */
+@utility bg-desk-dots {
+  background-color: var(--color-desk);
+  background-image: radial-gradient(rgb(11 15 20 / 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Admin grid texture (login hero, modal backdrop, motion panels). */
+@utility bg-ad-grid {
+  background-image:
+    linear-gradient(rgb(22 34 47 / 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(22 34 47 / 0.4) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Diagonal stripes for the unknown-step fallback card. */
+@utility bg-stripes {
+  background-image: repeating-linear-gradient(135deg, rgb(11 15 20 / 0.024) 0 10px, transparent 10px 20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shake,
+  .animate-glow,
+  .animate-pulse-ring,
+  .animate-shimmer,
+  .animate-scan {
+    animation: none;
+  }
+}

@@ -1,0 +1,24 @@
+# Dependencies and build output are produced inside the image
+node_modules
+**/node_modules
+**/dist
+coverage
+*.tsbuildinfo
+
+# Local data / secrets
+data
+*.db
+*.db-*
+.env
+.env.*
+
+# Tooling noise
+.git
+.github
+.claude
+.vscode
+.idea
+.DS_Store
+*.log
+Dockerfile
+.dockerignore
