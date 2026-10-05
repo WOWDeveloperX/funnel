@@ -5,8 +5,14 @@
 FROM node:22.23.3-bookworm-slim AS build
 WORKDIR /app
 
-# Install with the lockfile first (better layer caching). better-sqlite3 ships N-API prebuilds
-# for linux-x64/arm64 (glibc) inside its tarball, so no python/make/g++ toolchain is needed.
+# better-sqlite3 has a binding.gyp, so npm runs `node-gyp rebuild` on install even though the
+# package also ships prebuilt binaries: the build stage needs python3/make/g++. The runtime stage
+# below starts from a clean image, so the toolchain never reaches the final container.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 make g++ \
+ && rm -rf /var/lib/apt/lists/*
+
+# Install with the lockfile first (better layer caching).
 COPY package.json package-lock.json ./
 COPY packages/shared/package.json packages/shared/
 COPY apps/server/package.json apps/server/
