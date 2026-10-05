@@ -6,9 +6,9 @@
 
 ## Ссылки
 
-- Публичная воронка: добавляется после деплоя.
-- Админка: `/admin` на том же домене (версии), а также `/admin/analytics`, `/admin/events`, `/admin/sessions`.
-- Репозиторий: добавляется после публикации на GitHub.
+- Воронка: https://funnel-runtime.up.railway.app (английская версия: https://funnel-runtime.up.railway.app/?lang=en)
+- Админка: https://funnel-runtime.up.railway.app/admin — версии, а также `/admin/analytics`, `/admin/events`, `/admin/sessions`.
+- Репозиторий: https://github.com/WOWDeveloperX/funnel
 
 Админ-токен передаётся отдельно, в репозитории его нет.
 
